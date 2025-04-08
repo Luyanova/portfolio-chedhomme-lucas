@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Satoshi Variable';
+  font-style: normal;
+  font-weight: 100 200 300 400 500 700 800 900;
+  font-display: swap;
+  src: url('../fonts/Satoshi-Variable.ttf') format('truetype-variations');
+}
+
+@font-face {
+  font-family: 'Owners Wide';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/Owners-Wide-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Owners Wide';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Owners-Wide-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Owners Wide';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/Owners-Wide-Medium-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Owners Wide';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/Owners-Wide-Bold-Italic.ttf') format('truetype');
+}
+
+:root {
+  --font-display: 'Satoshi Variable', 'sans-serif';
+  --font-display--font-feature-settings:
+    'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 1, 'tnum' 0, 'onum' 0, 'lnum' 0, 'dlig' 0, 'hlig' 0;
+  --font-display--font-variation-settings: 'wght';
+}
+
+@theme {
+  --font-display: 'Satoshi Variable', 'sans-serif';
+  --font-display--font-feature-settings:
+    'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 1, 'tnum' 0, 'onum' 0, 'lnum' 0, 'dlig' 0, 'hlig' 0;
+  --font-display--font-variation-settings: 'wght';
+
+  --breakpoint-3xl: 120rem;
+
+  --color-primary-500: #0af29d;
+  --color-secondary-500: #04583a;
+
+  --color-grey-50: #fafafa;
+  --color-grey-100: #e4f1ec;
+
+  --color-grey-300: #bfc6c3;
+  --color-grey-400: #919e9a;
+  --color-grey-500: #474e4b;
+  --color-grey-600: #34453f;
+
+  --color-grey-800: #011810;
+  --color-grey-900: #010f0a;
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+}
+
+
+
+/* Attributs de données pour les animations avancées */
+[data-speed], 
+[data-lag] {
+  will-change: transform;
+}
