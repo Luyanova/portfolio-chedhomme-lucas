@@ -4,7 +4,7 @@
 
     <NuxtImg 
       src="/img/error/chevalierAgenou.png" 
-      class="w-[70%] h-auto object-cover rounded-sm" 
+      class="w-[70%] sm:w-[50%] lg:w-[30%] h-auto object-cover rounded-sm" 
       style="background-blend-mode: color-dodge; mix-blend-mode: plus-lighter;"
     />
 
