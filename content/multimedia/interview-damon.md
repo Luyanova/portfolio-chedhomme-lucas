@@ -1,7 +1,7 @@
 ---
 title: Interview Damon
 isTopProject: true
-summary: Des photos de mes amis dans un studio improvisé
+summary: Interview de Damon sur le média Share Music
 cover1: /img/projects/multimedia/interviewDamon/coverDamon.png
 cover2: /img/projects/multimedia/shareMusic/shareMusicMockup2.png
 tags:
@@ -9,8 +9,8 @@ tags:
 tools:
   - Appareil Photo
   - Suite Adobe
-projectUrl: https://www.instagram.com/reel/DE5GPdzs_nD/?igsh=MWE4NDNicHBtcXY0dw==
-date: Juillet 2023
+projectUrl: https://www.instagram.com/reel/DE5GPdzs_nD/
+date: Décembre 2024
 team:
   - name: Jane Doe
     site: https://jane.example.com
