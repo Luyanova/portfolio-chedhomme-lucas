@@ -6,7 +6,9 @@
       'bg-grey-900': $route.path === '/about' || $route.path.startsWith('/web')
     }"
   >
-    <LoadingScreen />
+    <Transition name="fade" mode="out-in" appear>
+      <LoadingScreen />
+    </Transition>
    
     <NuxtRouteAnnouncer />
     <div class="relative">
@@ -50,5 +52,15 @@ useSeoMeta({
 .page-leave-to {
   opacity: 0;
   transform: translateX(-20px);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

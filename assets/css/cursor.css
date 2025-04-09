@@ -1,0 +1,25 @@
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, opacity 0.3s;
+  display: none;
+  opacity: 0;
+}
+
+.custom-cursor svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Classe à ajouter aux éléments qui utilisent le curseur personnalisé */
+.custom-cursor-container * {
+  cursor: none !important;
+} 
+
+.project-lightbox-container * {
+    cursor: none !important;
+  }

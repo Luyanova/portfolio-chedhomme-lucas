@@ -12,8 +12,8 @@
           <linearGradient id="loading-gradient" x1="0%" y1="100%" x2="0%" y2="0%">
             <stop offset="0%" stop-color="#0AF29D" />
             <stop :offset="`${loadingProgress}%`" stop-color="#0AF29D" />
-            <stop :offset="`${loadingProgress}%`" stop-color="rgba(255, 255, 255, 0.3)" />
-            <stop offset="100%" stop-color="rgba(255, 255, 255, 0.3)" />
+            <stop :offset="`${loadingProgress}%`" stop-color="#344640" />
+            <stop offset="100%" stop-color="#344640" />
           </linearGradient>
         </defs>
         <path d="M34.4917 87.3122L70.6011 5.87332C72.0223 2.33984 68.8973 0.278922 65.3719 0.278931H42.7188C39.9316 0.418605 37.9517 1.74352 36.7396 4.19495L0.795598 85.2636C-0.519046 88.2762 4.048 90.3434 5.41737 87.3122L41.5222 5.8659H50.5297L15.3325 85.2628C14.5919 86.934 15.8154 88.8144 17.6431 88.8144C18.643 88.8144 19.549 88.2256 19.9543 87.3122L56.0722 5.86534H65.0814L29.8705 85.2628C28.5439 88.3015 33.136 90.3226 34.4917 87.3122Z" fill="url(#loading-gradient)"/>

@@ -1,6 +1,6 @@
 <template>
   <main v-if="project">
-    <section class="flex flex-col gap-4 py-10 px-4 llg:px-10 2xl:px-20 sm:flex-row-reverse lg:pb-20">
+    <section class="flex flex-col gap-4 py-10 px-4 lg:px-10 2xl:px-20 sm:flex-row-reverse lg:pb-20">
       <div class="flex flex-col sm:w-1/2 h-120 sm:h-140 lg:h-160 2xl:h-220">
         <LightboxImage 
           :src="project.cover1" 
@@ -65,7 +65,7 @@
 
     </section>
 
-    <section class="flex flex-col gap-4 py-10 px-4 llg:px-10 2xl:px-20 sm:flex-row">
+    <section class="flex flex-col gap-4 py-10 px-4 lg:px-10 2xl:px-20 sm:flex-row">
 
         <div class="sm:w-1/3 sm:h-120">
         <LightboxImage 
@@ -109,7 +109,7 @@
 
 
     <section>
-      <div class="flex flex-col px-4 llg:px-10 2xl:px-20 text-grey-900 text-base 2xl:text-lg font-['Satoshi_Variable'] font-medium leading-[150%]">
+      <div class="flex flex-col px-4 lg:px-10 2xl:px-20 text-grey-900 text-base 2xl:text-lg font-['Satoshi_Variable'] font-medium leading-[150%]">
       <ContentRenderer :value="project" />
     </div>
     </section>
@@ -121,7 +121,7 @@
       :style="`height: calc(100vh + ${project.galleryImages.length * 80}vh);`"
     >
       <!-- Titre fixe au centre -->
-      <h2 class="gallery-title sticky top-1/2 -translate-y-1/2 text-primary-500 font-['Owners_Wide'] text-5xl 2xl:text-6xl font-bold italic leading-[120%] text-center z-20 px-4 llg:px-10 2xl:px-20">
+      <h2 class="gallery-title sticky top-1/2 -translate-y-1/2 text-primary-500 font-['Owners_Wide'] text-5xl 2xl:text-6xl font-bold italic leading-[120%] text-center z-20 px-4 lg:px-10 2xl:px-20">
         {{ project.title }}
       </h2>
       
@@ -159,7 +159,7 @@
     </section>
 
     <section>
-      <div class="flex flex-col px-4 llg:px-10 2xl:px-20 py-10">
+      <div class="flex flex-col px-4 lg:px-10 2xl:px-20 py-10">
         <h2 class="text-primary-500 font-['Owners_Wide'] text-2xl sm:text-4xl 2xl:text-5xl font-bold normal leading-[140%] tracking-[0.48px]">
           Prochain projet
         </h2>

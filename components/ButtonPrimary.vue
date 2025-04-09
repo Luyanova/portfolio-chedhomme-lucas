@@ -1,5 +1,6 @@
 <template>
     <component 
+      ref="buttonRef"
       :is="to ? (isExternal ? 'a' : 'NuxtLink') : 'button'"
       :to="!isExternal ? to : undefined"
       :href="isExternal ? to : undefined"
@@ -8,7 +9,7 @@
       :download="download"
       :disabled="disabled"
       class="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-xs border-1 border-grey-600"
-      :class="disabled ? 'bg-grey-400 cursor-not-allowed' : 'bg-primary-500 cursor-pointer'"
+      :class="disabled ? 'bg-grey-400 cursor-not-allowed' : 'bg-primary-500 hover:bg-primary-600 hover:shadow-[0px_0px_13.9px_0px_#0AF29D] transition-all duration-300'"
       @click="to && !isExternal ? handleNavigation($event) : null"
     >
       <p class="text-base 2xl:text-lg font-medium font-['Satoshi_Variable']" :class="disabled ? 'text-grey-600' : 'text-grey-900'">
@@ -24,6 +25,9 @@
   </template>
   
   <script setup lang="ts">
+  import { ref, onMounted, onUnmounted } from 'vue';
+  import { setCursor } from '~/assets/typescript/cursor';
+
   const props = defineProps({
     label: {
       type: String,
@@ -49,12 +53,36 @@
       type: Boolean,
       default: false
     }
-  })
+  });
+
+  const buttonRef = ref<HTMLElement | null>(null);
+  let cleanupCursor: (() => void) | null = null;
+
+  onMounted(() => {
+    if (buttonRef.value && !props.disabled) {
+      cleanupCursor = setCursor(buttonRef.value, {
+        size: {
+          default: 30,
+          hover: 45
+        },
+        offset: {
+          x: 15,
+          y: 15
+        }
+      });
+    }
+  });
+
+  onUnmounted(() => {
+    if (cleanupCursor) {
+      cleanupCursor();
+    }
+  });
 
   const handleNavigation = (event: MouseEvent) => {
     if (props.to) {
-      event.preventDefault()
-      navigateTo(props.to)
+      event.preventDefault();
+      navigateTo(props.to);
     }
-  }
+  };
   </script>

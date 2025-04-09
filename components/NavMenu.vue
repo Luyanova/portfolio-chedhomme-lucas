@@ -70,6 +70,7 @@
   }
   
   const links = [
+    { path: '/', label: 'Accueil' },
     { path: '/about', label: 'À Propos' },
     { path: '/projects', label: 'Projets' },
   ]

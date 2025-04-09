@@ -33,10 +33,10 @@
           </NuxtLink>
           <div class="flex flex-col items-end gap-6">
             <NuxtLink to="/about">
-              <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] capitalize tracking-[0.64px] underline">À propos</p>
+              <p class="underline lg:no-underline font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] capitalize tracking-[0.64px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">À propos</p>
             </NuxtLink>
             <NuxtLink to="/projects">
-              <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] capitalize tracking-[0.64px] underline">Projets</p>
+              <p class="underline lg:no-underline font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] capitalize tracking-[0.64px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">Projets</p>
             </NuxtLink>
           </div>
         </div>
@@ -48,14 +48,14 @@
             <div class="flex flex-col gap-4 sm:gap-8">
               <div class="flex flex-col">
                 <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] tracking-[0.64px]">E-mail</p>
-                <a href="mailto:contact@lucaschedhomme.com " class="font-['Owners_Wide'] text-base sm:text-xl 2xl:text-3xl underline font-medium leading-[140%] tracking-[1px] decoration-solid decoration-skip-ink-none underline-offset-auto underline-position-from-font hover:text-primary-500 transition-colors  ">
+                <a href="mailto:contact@lucaschedhomme.com" class="underline lg:no-underline w-fit font-['Owners_Wide'] text-base sm:text-xl 2xl:text-3xl font-medium leading-[140%] tracking-[1px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">
                   contact@lucaschedhomme.com
                 </a>
               </div>
 
               <div class="flex flex-col">
                 <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] tracking-[0.64px]">Linkedin</p>
-                <a href="https://www.linkedin.com/in/lucas-chedhomme-395520283/" class="font-['Owners_Wide'] text-base sm:text-xl  2xl:text-3xl underline font-medium leading-[140%] tracking-[1px] decoration-solid decoration-skip-ink-none underline-offset-auto underline-position-from-font hover:text-primary-500 transition-colors ">
+                <a href="https://www.linkedin.com/in/lucas-chedhomme-395520283/" class="underline lg:no-underline w-fit font-['Owners_Wide'] text-base sm:text-xl 2xl:text-3xl font-medium leading-[140%] tracking-[1px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">
                   Lucas Chedhomme
                 </a>
               </div>
@@ -64,14 +64,14 @@
             <div class="flex flex-col gap-4 sm:gap-8">
               <div class="flex flex-col">
                 <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] tracking-[0.64px]">Instagram</p>
-                <a href="https://www.instagram.com/lucaschedh.design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="font-['Owners_Wide'] text-base sm:text-lg  2xl:text-3xl underline font-medium leading-[140%] tracking-[1px] decoration-solid decoration-skip-ink-none underline-offset-auto underline-position-from-font hover:text-primary-500 transition-colors">
+                <a href="https://www.instagram.com/lucaschedh.design?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="underline lg:no-underline w-fit font-['Owners_Wide'] text-base sm:text-lg 2xl:text-3xl font-medium leading-[140%] tracking-[1px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">
                   @lucaschedh.design
                 </a>
               </div>
 
               <div class="flex flex-col">
                 <p class="font-['Satoshi_Variable'] text-base lg:text-lg 2xl:text-xl font-normal leading-[150%] tracking-[0.64px]">Behance</p>
-                <a href="https://www.behance.net/lucaschedh" class="font-['Owners_Wide'] text-base sm:text-xl  2xl:text-3xl underline font-medium leading-[140%] tracking-[1px] decoration-solid decoration-skip-ink-none underline-offset-auto underline-position-from-font hover:text-primary-500 transition-colors">
+                <a href="https://www.behance.net/lucaschedh" class="underline lg:no-underline w-fit font-['Owners_Wide'] text-base sm:text-xl 2xl:text-3xl font-medium leading-[140%] tracking-[1px] relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-primary-500 after:transition-all after:duration-300 hover:after:w-full transition-colors duration-300 hover:text-primary-500">
                   @lucaschedh
                 </a>
               </div>

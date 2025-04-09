@@ -16,7 +16,7 @@
          :class="{ 'text-grey-400': themeStore.isDeveloperMode, 'text-grey-500': !themeStore.isDeveloperMode }">
         {{ themeStore.isDeveloperMode ? 'Une présentation de mon approche de développement' : 'Une vidéo pour me présenter ;)' }}
       </p>
-      <ButtonPrimary>
+      <ButtonPrimary disabled>
         Bientôt disponible
       </ButtonPrimary>
     </div>

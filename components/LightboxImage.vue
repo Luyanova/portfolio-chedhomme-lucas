@@ -1,19 +1,22 @@
 <template>
-  <div class="lightbox-container relative w-full h-full">
+  <div ref="containerRef" class="lightbox-container relative w-full h-full ">
     <!-- Image thumbnail avec dégradé et icône en coin inférieur droit -->
     <div 
       class="relative cursor-pointer rounded-xs overflow-hidden w-full h-full" 
       @click.stop="open"
     >
       <NuxtImg 
+        v-if="isVisible"
         :src="src" 
         :alt="alt"
         :format="format"
         :quality="quality"
-        :loading="loading"
+        loading="lazy"
         :fit="fit"
         class="w-full h-full object-cover"
       />
+      <!-- Placeholder pendant le chargement -->
+      <div v-else class="w-full h-full bg-grey-800 animate-pulse" />
       <!-- Dégradé vertical partant du bas -->
       <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-grey-900/70 to-transparent pointer-events-none" />
       <!-- Icône ArrowExtend en bas à droite -->
@@ -44,11 +47,12 @@
           
           <!-- Image en grand -->
           <NuxtImg 
+            v-if="isOpen"
             :src="src" 
             :alt="alt"
             format="webp"
-            quality="90"
-            loading="lazy"
+            quality="60"
+            loading="eager"
             fit="contain"
             class="max-w-full max-h-[90vh] object-contain rounded-xs"
           />
@@ -60,6 +64,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
+import { setCursor } from '~/assets/typescript/cursor';
 import ArrowExtend from '~/components/icons/ArrowExtend.vue';
 import CloseCross from '~/components/icons/closeCross.vue';
 
@@ -78,7 +83,7 @@ defineProps({
   },
   quality: {
     type: [String, Number],
-    default: 50
+    default: 30
   },
   loading: {
     type: String as () => 'lazy' | 'eager',
@@ -91,6 +96,47 @@ defineProps({
 });
 
 const isOpen = ref(false);
+const isVisible = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
+let cleanupCursor: (() => void) | null = null;
+
+// Intersection Observer pour détecter quand l'image est dans le viewport
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          isVisible.value = true;
+          // Une fois que l'image est visible, on peut arrêter d'observer
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: '50px', // Commence à charger un peu avant que l'image soit visible
+      threshold: 0.1
+    }
+  );
+
+  if (containerRef.value) {
+    observer.observe(containerRef.value);
+    
+    // Initialiser le curseur personnalisé
+    cleanupCursor = setCursor(containerRef.value);
+  }
+
+  // Nettoyage
+  onUnmounted(() => {
+    if (containerRef.value) {
+      observer.unobserve(containerRef.value);
+    }
+    
+    // Nettoyer le curseur personnalisé
+    if (cleanupCursor) {
+      cleanupCursor();
+    }
+  });
+});
 
 const open = () => {
   isOpen.value = true;

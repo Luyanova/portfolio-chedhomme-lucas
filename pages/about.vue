@@ -13,7 +13,7 @@
             loading="eager"
             priority
             format="webp"
-            quality="50"
+            quality="30"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-grey-900/70 via-transparent to-transparent pointer-events-none hidden sm:block"/>
         </div>

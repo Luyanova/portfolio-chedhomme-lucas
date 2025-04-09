@@ -1,21 +1,24 @@
 <template>
-  <div class="project-lightbox-container relative">
+  <div ref="containerRef" class="project-lightbox-container relative">
     <!-- Project thumbnail avec dégradé et icône en coin inférieur droit -->
     <div 
       class="relative cursor-pointer rounded-sm overflow-hidden" 
       @click.stop="open"
     >
       <NuxtImg 
+        v-if="isVisible"
         :src="project?.cover1" 
         :alt="project?.title"
         :width="width"
         :height="height"
         :format="format"
         :quality="quality"
-        :loading="loading"
+        loading="lazy"
         :fit="fit"
         class="w-full h-auto object-cover"
       />
+      <!-- Placeholder pendant le chargement -->
+      <div v-else class="w-full h-full bg-grey-800 animate-pulse" />
       <!-- Dégradé vertical partant du bas -->
       <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-grey-900/70 to-transparent pointer-events-none" />
       
@@ -49,11 +52,12 @@
           <!-- Image en grand -->
           <div class="flex flex-col gap-2">
           <NuxtImg 
+            v-if="isOpen"
             :src="project?.cover1" 
             :alt="project?.title"
             format="webp"
-            quality="90"
-            loading="lazy"
+            quality="60"
+            loading="eager"
             fit="contain"
             class="max-w-full max-h-[70vh] object-contain rounded-xs"
           />
@@ -85,6 +89,7 @@ import ArrowExtend from '~/components/icons/ArrowExtend.vue';
 import CloseCross from '~/components/icons/closeCross.vue';
 import ButtonPrimary from '~/components/ButtonPrimary.vue';
 import ArrowDown from '~/components/icons/ArrowDown.vue';
+import { setCursor } from '~/assets/typescript/cursor';
 import type { PropType } from 'vue';
 
 // Interface for project data based on content.config.ts schema
@@ -138,7 +143,7 @@ const props = defineProps({
   },
   quality: {
     type: [String, Number],
-    default: 40
+    default: 30
   },
   loading: {
     type: String as PropType<'lazy' | 'eager'>,
@@ -152,7 +157,40 @@ const props = defineProps({
 
 // État
 const isOpen = ref(false);
+const isVisible = ref(false);
+const containerRef = ref<HTMLElement | null>(null);
 const project = ref<ProjectData | null>(null);
+let cleanupCursor: (() => void) | null = null;
+
+// Intersection Observer pour détecter quand l'image est dans le viewport
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          isVisible.value = true;
+          // Une fois que l'image est visible, on peut arrêter d'observer
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: '50px', // Commence à charger un peu avant que l'image soit visible
+      threshold: 0.1
+    }
+  );
+
+  if (containerRef.value) {
+    observer.observe(containerRef.value);
+  }
+
+  // Nettoyage
+  onUnmounted(() => {
+    if (containerRef.value) {
+      observer.unobserve(containerRef.value);
+    }
+  });
+});
 
 // Fetch project data using queryCollection
 const fetchProject = async () => {
@@ -239,10 +277,20 @@ const handleEscape = (e: KeyboardEvent) => {
 onMounted(() => {
   window.addEventListener('keydown', handleEscape);
   fetchProject();
+  
+  // Initialiser le curseur personnalisé
+  if (containerRef.value) {
+    cleanupCursor = setCursor(containerRef.value);
+  }
 });
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleEscape);
+  
+  // Nettoyer le curseur personnalisé
+  if (cleanupCursor) {
+    cleanupCursor();
+  }
 });
 </script>
 
@@ -252,6 +300,8 @@ onUnmounted(() => {
   height: auto;
   position: relative;
 }
+
+
 
 .lightbox-modal {
   isolation: isolate;
