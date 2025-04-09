@@ -1,6 +1,6 @@
 ---
 title: Boîtes de nuit Porto
-isTopProject: ""
+isTopProject: "true"
 summary: Des photos de mes amis dans un studio improvisé
 cover1: /img/projects/multimedia/clubPorto/clubPorto.jpg
 cover2: /img/projects/web/awesome-app/cover2.png
