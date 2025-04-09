@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card sm:w-[800px] lg:w-[966px] flex flex-col lg:flex-row gap-4 overflow-hidden p-2 rounded-xs">
+  <div class="project-card sm:w-[800px] flex flex-col lg:flex-row gap-4 overflow-hidden p-2 rounded-xs">
     <!-- Image de couverture -->
     <div class="w-full h-64 sm:h-100 lg:w-[400px] lg:h-full overflow-hidden rounded-sm flex-shrink-0">
       <NuxtImg 

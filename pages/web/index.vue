@@ -78,108 +78,108 @@ const preloadAllImages = async () => {
 
 // Configurer l'animation GSAP après le chargement des images
 const setupAnimation = () => {
-  if (!projectsSection.value || !posts.value) return
+  if (!projectsSection.value || !posts.value) return;
 
-  const { $gsap } = useNuxtApp()
+  const { $gsap } = useNuxtApp();
   
   nextTick(() => {
-    console.log("Posts length:", posts.value?.length)
-    const cardElements = document.querySelectorAll('.project-card-web')
-    console.log("Cards found:", cardElements.length)
+    const cardElements = document.querySelectorAll('.project-card-web');
+    console.log("Posts length:", posts.value?.length);
+    console.log("Cards found:", cardElements.length);
     
-    if (cardElements.length === 0) return
+    if (cardElements.length === 0) return;
     
-    // Positionner correctement toutes les cartes en dehors de la vue
+    // 1. Positionner initialement toutes les cartes hors écran et cachées
     // @ts-expect-error - GSAP est défini dans les plugins
     $gsap.set(cardElements, {
-      yPercent: 180,     // Position initiale plus basse (hors écran)
-      scale: 1.2,        // Commencer à 120% de la taille (plus grand qu'avant)
+      yPercent: 180,     // Position initiale basse (hors écran)
+      scale: 1.2,        // Taille initiale plus grande
       rotation: 5,       // Légère rotation initiale
-      zIndex: (i: number) => i + 1,  // Z-index croissant: les dernières cartes seront au-dessus
-      visibility: (i: number) => i === 0 ? 'visible' : 'hidden', // Seule la première carte est visible
+      zIndex: (i: number) => i, // Z-index initial (0-based)
+      visibility: 'hidden', // Toutes cachées au départ
+      position: 'absolute', // Nécessaire pour la superposition
+      top: 0,
       left: '50%',       // Centrer horizontalement
       xPercent: -50,     // Ajuster pour un centrage parfait
-      margin: 0,         // Supprimer les marges qui pourraient affecter le centrage
-      width: (_i: number, _el: Element) => {
-        // Conserver la largeur définie par le CSS
-        return window.innerWidth >= 1024 ? '966px' : window.innerWidth >= 640 ? '800px' : '100%'
-      }
-    })
-    
-    // Créer une timeline pour l'animation des cartes
+      margin: 0,         // Assurer l'absence de marges
+      width: () => window.innerWidth >= 1024 ? '966px' : window.innerWidth >= 640 ? '800px' : '100%', // Largeur responsive
+      transformOrigin: 'bottom center' // Point de transformation
+    });
+
+    // Rendre la première carte visible explicitement avant l'animation
+    if (cardElements[0]) {
+      // @ts-expect-error - GSAP est défini dans les plugins
+      $gsap.set(cardElements[0], { visibility: 'visible' });
+    }
+
+    // Définir les paramètres de l'animation
+    const cardAnimationDuration = 1.0; // Durée de l'animation d'une carte
+    const staggerTime = 0.5; // Délai entre le début de l'animation de chaque carte
+
+    // 2. Créer la timeline et le ScrollTrigger
     // @ts-expect-error - GSAP est défini dans les plugins
     const tl = $gsap.timeline({
       scrollTrigger: {
         trigger: projectsSection.value,
-        start: 'top 5%', // Déclencher plus tôt (quand le haut de la section atteint 5% du viewport)
-        end: `+=${cardElements.length * 1200 + 500}`, // Ajouter une distance supplémentaire après la dernière animation
-        scrub: 1.2,      // Valeur plus élevée pour un effet plus smooth
-        pin: true,
+        start: 'top top', // Déclencher quand le haut de la section atteint le haut du viewport
+        // Ajuster la distance de défilement nécessaire. 
+        // Une valeur comme window.innerHeight * (nombre de cartes / 2) peut être un bon point de départ.
+        end: `+=${window.innerHeight * (cardElements.length / 1.5)}`, 
+        scrub: 1.2,      // Lissage du défilement
+        pin: true,       // Épingler la section pendant l'animation
         pinSpacing: true,
         anticipatePin: 1, // Améliorer la réactivité du pin
-        markers: false,
-        // @ts-expect-error - Les types GSAP ne sont pas disponibles
-        onUpdate: (self) => {
-          // Calculer l'index de la carte active en fonction de la progression du scroll
-          const newIndex = Math.min(
-            Math.floor(self.progress * cardElements.length), 
-            cardElements.length - 1
-          )
-          // Mettre à jour l'index de la carte active seulement s'il a changé
+        markers: false,   // Mettre à true pour déboguer le trigger
+        onUpdate: (self: { progress: number }) => {
+          // Calculer l'index de la carte active en fonction de la progression
+           const rawIndex = self.progress * cardElements.length;
+           // Plafonner pour éviter les dépassements et gérer le cas où progress est 1
+           const newIndex = Math.min(Math.floor(rawIndex), cardElements.length - 1);
+           
+          // Mettre à jour l'index seulement s'il a changé
           if (newIndex !== activeCardIndex.value) {
-            activeCardIndex.value = newIndex
+            activeCardIndex.value = newIndex;
           }
-        }
+        },
+         onLeave: () => {
+             // Optionnel: Assurer que la dernière carte est active à la fin
+             if (cardElements.length > 0) {
+                 activeCardIndex.value = cardElements.length - 1;
+             }
+         },
+         onEnterBack: () => {
+             // Optionnel: Assurer que la première carte est active au début en scrollant назад
+             activeCardIndex.value = 0;
+         }
       }
-    })
+    });
     
-    // Animer chaque carte individuellement
+    // 3. Animer chaque carte individuellement avec un décalage (stagger)
     cardElements.forEach((card, index) => {
-      // Démarrage de l'animation pour cette carte
-      if (index > 0) {
-        // Pour les cartes après la première, d'abord les rendre visibles
-        tl.set(card, { visibility: 'visible' }, index * 1.2) // Décalage beaucoup plus important
-      }
+      // Calculer le décalage vertical pour l'effet d'empilement
+      const yOffset = Math.pow(index, 1.5) * 3; 
       
-      // Calculer un décalage exponentiel pour que les cartes s'empilent avec un léger décalage visible
-      const yOffset = Math.pow(index, 1.5) * 3; // Décalage positif qui augmente exponentiellement avec l'index
-      
-      // Animer la carte pour qu'elle vienne à sa position finale avec un léger décalage vertical
+      // Animer la carte vers sa position finale
       tl.to(card, {
-        yPercent: -10 + yOffset,    // Position plus haute avec décalage exponentiel
-        scale: 0.90,    // Réduire à 90% de la taille
-        rotation: 0,    // Revenir à une rotation neutre
-        duration: 1,
-        ease: "power2.inOut", // Courbe d'accélération/décélération plus prononcée
-        // Forcer la position absolute pour garantir la superposition
-        position: 'absolute',
-        top: 0,
-        left: '50%',     // Maintenir le centrage horizontal
-        xPercent: -50,   // Ajustement pour un centrage parfait
-        right: 'auto',
-        bottom: 0,
-        margin: 0,       // Supprimer les marges qui pourraient affecter le centrage
-        width: () => {
-          // Maintenir la même largeur pendant l'animation
-          return window.innerWidth >= 1024 ? '966px' : window.innerWidth >= 640 ? '800px' : '100%'
-        }
-      }, index * 1.2) // Synchroniser avec le délai d'apparition
-      
-      // Si ce n'est pas la dernière carte, ajouter une pause plus longue
-      if (index < cardElements.length - 1) {
-        tl.to({}, { duration: 1.0 }, '>') // Pause beaucoup plus longue avant la carte suivante
-      }
-    })
+        yPercent: -10 + yOffset,    // Position finale (légèrement au-dessus + décalage)
+        scale: 0.90,                // Taille finale réduite
+        rotation: 0,                // Rotation finale neutre
+        visibility: 'visible',      // Rendre visible pendant l'animation
+        duration: cardAnimationDuration, // Durée de l'animation de cette carte
+        ease: "power2.inOut",       // Courbe d'animation
+        zIndex: index + 1 // Z-index croissant: les dernières cartes sont au-dessus
+      }, index * staggerTime); // Démarrer l'animation de cette carte après un délai proportionnel à son index
+    });
     
-    // Ajouter un délai supplémentaire à la fin pour maintenir le pin après la dernière animation
-    tl.to({}, { duration: 2.0 })
+    // Ajouter un petit délai à la fin pour que la dernière carte reste visible un peu plus longtemps avant le dépinglage
+    tl.to({}, { duration: 0.5 }); 
 
-    // Ajouter des gestionnaires d'événements pour le survol de la souris
+    // 4. Ajouter les gestionnaires d'événements pour le survol (inchangé)
     cardElements.forEach(card => {
       card.addEventListener('mouseenter', () => {
         // @ts-expect-error - GSAP est défini dans les plugins
         $gsap.to(card, {
-          y: '-=5',
+          y: '-=5', // Ajuster la position y relative
           boxShadow: '0 30px 60px rgba(10, 242, 157, 0.25), 0 15px 30px rgba(10, 242, 157, 0.15)',
           duration: 0.3,
           overwrite: true
@@ -189,14 +189,14 @@ const setupAnimation = () => {
       card.addEventListener('mouseleave', () => {
         // @ts-expect-error - GSAP est défini dans les plugins
         $gsap.to(card, {
-          y: '+=5',
+          y: '+=5', // Revenir à la position y relative
           boxShadow: '0 15px 50px rgba(0, 0, 0, 0.35), 0 10px 25px rgba(0, 0, 0, 0.2)',
           duration: 0.3,
           overwrite: true
         });
       });
     });
-  })
+  }); // Fin de nextTick
 }
 
 onMounted(() => {
@@ -213,7 +213,7 @@ onMounted(() => {
     <div class="flex flex-col gap-8 px-4 lg:px-10 2xl:px-20 pt-10 lg:flex-row-reverse lg:gap-30 pb-100 ">
       <div class="w-full h-[50vh] sm:h-[65vh] overflow-hidden rounded-sm">
         <NuxtImg
-          src="/img/projects/web/webMockup.png"
+          src="/img/projects/web/web.png"
           alt="Projet web mockup"
           format="webp"
           quality="80"
