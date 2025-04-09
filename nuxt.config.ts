@@ -13,8 +13,20 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    build: {
+      sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          }
+        }
+      }
+    },
   },
-  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@pinia/nuxt'],
+  modules: ['@nuxtjs/seo', '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@pinia/nuxt'],
   plugins: ['~/plugins/gsap.client'],
   app: {
     head: {

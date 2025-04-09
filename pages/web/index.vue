@@ -80,7 +80,8 @@ const preloadAllImages = async () => {
 const setupAnimation = () => {
   if (!projectsSection.value || !posts.value) return;
 
-  const { $gsap } = useNuxtApp();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
   
   nextTick(() => {
     const cardElements = document.querySelectorAll('.project-card-web');
@@ -90,10 +91,9 @@ const setupAnimation = () => {
     if (cardElements.length === 0) return;
     
     // 1. Positionner initialement toutes les cartes hors écran et cachées
-    // @ts-expect-error - GSAP est défini dans les plugins
     $gsap.set(cardElements, {
-      yPercent: 180,     // Position initiale basse (hors écran)
-      scale: 1.2,        // Taille initiale plus grande
+      yPercent: 170,     // Position initiale plus basse (hors écran)
+      scale: 1.1,        // Taille initiale légèrement plus grande
       rotation: 5,       // Légère rotation initiale
       zIndex: (i: number) => i, // Z-index initial (0-based)
       visibility: 'hidden', // Toutes cachées au départ
@@ -108,24 +108,20 @@ const setupAnimation = () => {
 
     // Rendre la première carte visible explicitement avant l'animation
     if (cardElements[0]) {
-      // @ts-expect-error - GSAP est défini dans les plugins
       $gsap.set(cardElements[0], { visibility: 'visible' });
     }
 
     // Définir les paramètres de l'animation
     const cardAnimationDuration = 1.0; // Durée de l'animation d'une carte
-    const staggerTime = 0.5; // Délai entre le début de l'animation de chaque carte
+    const staggerTime = 0.7; // Augmenté pour plus d'espace entre les cartes
 
     // 2. Créer la timeline et le ScrollTrigger
-    // @ts-expect-error - GSAP est défini dans les plugins
     const tl = $gsap.timeline({
       scrollTrigger: {
         trigger: projectsSection.value,
-        start: 'top top', // Déclencher quand le haut de la section atteint le haut du viewport
-        // Ajuster la distance de défilement nécessaire. 
-        // Une valeur comme window.innerHeight * (nombre de cartes / 2) peut être un bon point de départ.
+        start: 'top top+=80', // Ajusté pour tenir compte de la hauteur de la barre de navigation
         end: `+=${window.innerHeight * (cardElements.length / 1.5)}`, 
-        scrub: 1.2,      // Lissage du défilement
+        scrub: true,      // Lissage du défilement
         pin: true,       // Épingler la section pendant l'animation
         pinSpacing: true,
         anticipatePin: 1, // Améliorer la réactivité du pin
@@ -133,42 +129,49 @@ const setupAnimation = () => {
         onUpdate: (self: { progress: number }) => {
           // Calculer l'index de la carte active en fonction de la progression
            const rawIndex = self.progress * cardElements.length;
-           // Plafonner pour éviter les dépassements et gérer le cas où progress est 1
            const newIndex = Math.min(Math.floor(rawIndex), cardElements.length - 1);
            
           // Mettre à jour l'index seulement s'il a changé
           if (newIndex !== activeCardIndex.value) {
             activeCardIndex.value = newIndex;
+            console.log("Index actif:", newIndex);
           }
         },
-         onLeave: () => {
-             // Optionnel: Assurer que la dernière carte est active à la fin
-             if (cardElements.length > 0) {
-                 activeCardIndex.value = cardElements.length - 1;
-             }
-         },
-         onEnterBack: () => {
-             // Optionnel: Assurer que la première carte est active au début en scrollant назад
-             activeCardIndex.value = 0;
-         }
+        onLeaveBack: () => {
+          // S'assurer que la première carte est active lorsqu'on quitte la section par le haut
+          activeCardIndex.value = 0;
+        },
+        onLeave: () => {
+          // S'assurer que la dernière carte est active lorsqu'on quitte la section par le bas
+          activeCardIndex.value = cardElements.length - 1;
+        }
       }
     });
     
     // 3. Animer chaque carte individuellement avec un décalage (stagger)
     cardElements.forEach((card, index) => {
       // Calculer le décalage vertical pour l'effet d'empilement
-      const yOffset = Math.pow(index, 1.5) * 3; 
+      const yOffset = Math.pow(index, 1.5) * 3; // Augmenté pour plus d'espace entre les cartes
       
-      // Animer la carte vers sa position finale
-      tl.to(card, {
-        yPercent: -10 + yOffset,    // Position finale (légèrement au-dessus + décalage)
-        scale: 0.90,                // Taille finale réduite
-        rotation: 0,                // Rotation finale neutre
-        visibility: 'visible',      // Rendre visible pendant l'animation
-        duration: cardAnimationDuration, // Durée de l'animation de cette carte
-        ease: "power2.inOut",       // Courbe d'animation
-        zIndex: index + 1 // Z-index croissant: les dernières cartes sont au-dessus
-      }, index * staggerTime); // Démarrer l'animation de cette carte après un délai proportionnel à son index
+      // Animer la carte vers sa position finale - avec des points de départ et d'arrivée
+      // pour permettre une réversibilité correcte de l'animation
+      tl.fromTo(card, 
+        {
+          yPercent: 150,
+          scale: 1.1,
+          rotation: 5,
+          visibility: 'hidden',
+        },
+        {
+          yPercent: -10 + yOffset,    // Position finale (légèrement au-dessus + décalage)
+          scale: 0.90,                // Taille finale réduite
+          rotation: 0,                // Rotation finale neutre
+          visibility: 'visible',      // Rendre visible pendant l'animation
+          duration: cardAnimationDuration, // Durée de l'animation de cette carte
+          ease: "power2.inOut",       // Courbe d'animation
+          zIndex: index + 1 // Z-index croissant: les dernières cartes sont au-dessus
+        }, 
+        index * staggerTime); // Démarrer l'animation de cette carte après un délai proportionnel à son index
     });
     
     // Ajouter un petit délai à la fin pour que la dernière carte reste visible un peu plus longtemps avant le dépinglage
@@ -177,7 +180,6 @@ const setupAnimation = () => {
     // 4. Ajouter les gestionnaires d'événements pour le survol (inchangé)
     cardElements.forEach(card => {
       card.addEventListener('mouseenter', () => {
-        // @ts-expect-error - GSAP est défini dans les plugins
         $gsap.to(card, {
           y: '-=5', // Ajuster la position y relative
           boxShadow: '0 30px 60px rgba(10, 242, 157, 0.25), 0 15px 30px rgba(10, 242, 157, 0.15)',
@@ -187,7 +189,6 @@ const setupAnimation = () => {
       });
       
       card.addEventListener('mouseleave', () => {
-        // @ts-expect-error - GSAP est défini dans les plugins
         $gsap.to(card, {
           y: '+=5', // Revenir à la position y relative
           boxShadow: '0 15px 50px rgba(0, 0, 0, 0.35), 0 10px 25px rgba(0, 0, 0, 0.2)',
@@ -199,10 +200,28 @@ const setupAnimation = () => {
   }); // Fin de nextTick
 }
 
+// Fonction pour réinitialiser l'état de l'animation
+const resetAnimationState = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
+  const cardElements = document.querySelectorAll('.project-card-web');
+  activeCardIndex.value = 0;
+  cardElements.forEach((card: Element, index: number) => {
+    $gsap.set(card, {
+      yPercent: 170,
+      scale: 1.1,
+      rotation: 5,
+      visibility: 'hidden',
+      zIndex: index
+    });
+  });
+};
+
 onMounted(() => {
   // Précharger les images, puis configurer l'animation
   preloadAllImages().then(() => {
-    setupAnimation()
+    resetAnimationState();
+    setupAnimation();
   })
 })
 </script>
@@ -263,7 +282,7 @@ onMounted(() => {
         <div ref="projectsContainer" class="relative w-full max-w-[95%] sm:max-w-[800px] lg:max-w-[966px] h-[530px] sm:h-[700px] lg:h-[360px] mx-auto px-0 pt-2 pb-10">
           <WebProjectCard 
             v-for="(article, index) in posts" 
-            :key="article.path" 
+            :key="article.path || index" 
             :article="article"
             class="project-card-web absolute inset-0 bg-grey-900 rounded-sm"
             :style="{
