@@ -1,8 +1,8 @@
 ---
 title: Les Chevaliers
-isTopProject: ""
+isTopProject: "true"
 summary: Des photos de mes amis dans un studio improvisé
-cover1: /img/projects/multimedia/chevaliers/chevaliersCover.png
+cover1: /img/projects/multimedia/chevaliers/chevalier2.png
 cover2: /img/projects/web/awesome-app/cover2.png
 tags:
   - Graphisme
@@ -19,8 +19,9 @@ description: "Pour arriver à ce résultat, j'ai recherché des gravures de
   montages auxquels j'ai ajouté un effet de dithering. "
 objective: Juste de m'amuser.
 galleryImages:
-  - /img/projects/web/awesome-app/chevalierAgenou.png
-  - /img/projects/web/awesome-app/chevalierHache.png
+  - /img/projects/multimedia/chevaliers/chevalier2.png
+  - /img/projects/multimedia/chevaliers/chevalier3.png
+  - /img/projects/multimedia/chevaliers/chevaliersCover.png
 ---
 
 #
