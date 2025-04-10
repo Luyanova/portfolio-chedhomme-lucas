@@ -24,41 +24,76 @@
            
 
             <form class="flex flex-col gap-8" autocomplete="on" @submit.prevent="submitForm">
+                <!-- Champ honeypot -->
+                <input 
+                    v-model="formData.honeypot"
+                    type="text" 
+                    name="website" 
+                    autocomplete="off"
+                    tabindex="-1"
+                    class="opacity-0 absolute h-0 w-0 pointer-events-none"
+                    aria-hidden="true"
+                >
                 <div class="flex flex-col gap-10">
                     <!-- Sujet du contact -->
                     <div class="relative">
-                        <select v-model="formData.subject" class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 appearance-none font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]">
+                        <select 
+                            v-model="formData.subject" 
+                            class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 appearance-none font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
+                            :class="{ 'border-[#F2120A]': subjectError }"
+                            @blur="markAsTouched('subject')"
+                            required
+                        >
                             <option value="" disabled selected>Sujet du contact</option>
                             <option value="photographie">Photographie</option>
                             <option value="web">Web</option>
                             <option value="ecole">École</option>
                             <option value="autre">Autre</option>
                         </select>
-                        <div class="absolute inset-y-0 right-0 flex items-center px-4  pointer-events-none">
+                        <div class="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none">
                             <ArrowDownVertical class="w-4 h-4" />
                         </div>
+                        <p v-if="subjectError" class="mt-1 text-[#F2120A] font-['Satoshi_Variable'] text-sm 2xl:text-base">
+                            {{ subjectError }}
+                        </p>
                     </div>
 
                     <div class="flex flex-col gap-4 sm:flex-row">
                         <!-- Prénom -->
-                        <input 
-                            v-model="formData.firstName" 
-                            type="text" 
-                            name="firstName"
-                            autocomplete="given-name"
-                            placeholder="Prénom" 
-                            class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
-                        >
+                        <div class="flex flex-col sm:w-1/2">
+                            <input 
+                                v-model="formData.firstName" 
+                                type="text" 
+                                name="firstName"
+                                autocomplete="given-name"
+                                placeholder="Prénom" 
+                                class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
+                                :class="{ 'border-[#F2120A]': firstNameError }"
+                                @blur="markAsTouched('firstName')"
+                                required
+                            >
+                            <p v-if="firstNameError" class="mt-1 text-[#F2120A] font-['Satoshi_Variable'] text-sm 2xl:text-base">
+                                {{ firstNameError }}
+                            </p>
+                        </div>
 
                         <!-- Nom -->
-                        <input 
-                            v-model="formData.lastName" 
-                            type="text" 
-                            name="lastName"
-                            autocomplete="family-name"
-                            placeholder="Nom" 
-                            class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
-                        >
+                        <div class="flex flex-col sm:w-1/2">
+                            <input 
+                                v-model="formData.lastName" 
+                                type="text" 
+                                name="lastName"
+                                autocomplete="family-name"
+                                placeholder="Nom" 
+                                class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
+                                :class="{ 'border-[#F2120A]': lastNameError }"
+                                @blur="markAsTouched('lastName')"
+                                required
+                            >
+                            <p v-if="lastNameError" class="mt-1 text-[#F2120A] font-['Satoshi_Variable'] text-sm 2xl:text-base">
+                                {{ lastNameError }}
+                            </p>
+                        </div>
                     </div>
 
                     <div class="flex flex-col gap-4 sm:flex-row">
@@ -99,14 +134,29 @@
                 </div>
 
                 <!-- Message -->
-                <textarea 
-                    v-model="formData.message" 
-                    name="message"
-                    placeholder="Votre message" 
-                    rows="2" 
-                    class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
-                />
+                <div class="flex flex-col">
+                    <textarea 
+                        v-model="formData.message" 
+                        name="message"
+                        placeholder="Votre message" 
+                        rows="2" 
+                        class="w-full px-4 py-4 text-grey-600 border border-gray-300 rounded-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
+                        :class="{ 'border-[#F2120A]': messageError }"
+                        @blur="markAsTouched('message')"
+                        required
+                    />
+                    <p v-if="messageError" class="mt-1 text-[#F2120A] font-['Satoshi_Variable'] text-sm 2xl:text-base">
+                        {{ messageError }}
+                    </p>
+                </div>
 
+                <!-- Message d'erreur global -->
+                <div v-if="formError" class="p-3 bg-red-50 border border-[#F2120A] rounded-sm mt-2">
+                    <p class="text-[#F2120A] font-['Satoshi_Variable'] text-sm 2xl:text-base">
+                        {{ formError }}
+                    </p>
+                </div>
+                
                 <!-- Submit Button -->
                 <div class="flex justify-end mt-2">
                     <ButtonPrimary :icon="ArrowUp" type="submit" :disabled="!isFormValid">
@@ -145,7 +195,7 @@
 <script setup>
 import ArrowUp from '~/components/icons/ArrowUp.vue'
 import ArrowDownVertical from '~/components/icons/ArrowDownVertical.vue'
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 
 // Définir les méta-données SEO de la page
 useSeoMeta({
@@ -158,18 +208,23 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
 })
 
-const formData = ref({
-    subject: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    message: ''
-})
+const formData = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+  honeypot: ''
+});
 
 const touched = ref({
     email: false,
-    phone: false
+    phone: false,
+    firstName: false,
+    lastName: false,
+    message: false,
+    subject: false
 })
 
 // Validation functions
@@ -179,7 +234,7 @@ const isValidEmail = (email) => {
 }
 
 const isValidPhone = (phone) => {
-    if (!phone) return true // Empty phone is valid (optional field)
+    if (!phone || !phone.trim()) return true // Empty phone is valid (optional field)
     
     // First, remove any spaces, dots, or dashes that might be in the number
     const cleanedPhone = phone.replace(/[\s.-]/g, '')
@@ -193,14 +248,35 @@ const isValidPhone = (phone) => {
 
 // Computed validation errors
 const emailError = computed(() => {
-    if (!touched.value.email || !formData.value.email) return ''
-    return !isValidEmail(formData.value.email) ? 'Format d\'email invalide' : ''
-})
+    if (!touched.value.email) return '';
+    if (!formData.email.trim()) return 'L\'email est requis';
+    return !isValidEmail(formData.email) ? 'Format d\'email invalide' : '';
+});
 
 const phoneError = computed(() => {
-    if (!touched.value.phone || !formData.value.phone) return ''
-    return !isValidPhone(formData.value.phone) ? 'Format de numéro invalide' : ''
-})
+    if (!touched.value.phone || !formData.phone) return '';
+    return !isValidPhone(formData.phone) ? 'Format de numéro invalide' : '';
+});
+
+const firstNameError = computed(() => {
+    if (!touched.value.firstName) return '';
+    return !formData.firstName.trim() ? 'Le prénom est requis' : '';
+});
+
+const lastNameError = computed(() => {
+    if (!touched.value.lastName) return '';
+    return !formData.lastName.trim() ? 'Le nom est requis' : '';
+});
+
+const messageError = computed(() => {
+    if (!touched.value.message) return '';
+    return !formData.message.trim() ? 'Le message est requis' : '';
+});
+
+const subjectError = computed(() => {
+    if (!touched.value.subject) return '';
+    return !formData.subject ? 'Veuillez sélectionner un sujet' : '';
+});
 
 // Mark fields as touched when they lose focus
 const markAsTouched = (field) => {
@@ -209,24 +285,81 @@ const markAsTouched = (field) => {
 
 // Check if form is valid
 const isFormValid = computed(() => {
-    return formData.value.subject && 
-           formData.value.firstName && 
-           formData.value.lastName && 
-           formData.value.email && 
-           formData.value.message && 
-           !emailError.value && 
-           (!formData.value.phone || !phoneError.value) // Phone is optional but if provided must be valid
-})
+  // Nettoyer les champs pour éviter les espaces vides
+  const cleanedPhone = formData.phone.trim();
+  
+  // Vérifier que tous les champs obligatoires sont remplis et valides
+  if (!formData.email || !isValidEmail(formData.email)) return false;
+  if (!formData.firstName.trim()) return false;
+  if (!formData.lastName.trim()) return false;
+  if (!formData.message.trim()) return false;
+  if (!formData.subject) return false;
+  
+  // Vérifier le format du téléphone s'il est renseigné
+  if (cleanedPhone && !isValidPhone(cleanedPhone)) return false;
+  
+  return true;
+});
 
-const submitForm = () => {
-    // Mark all fields as touched on submit attempt
-    touched.value.email = true
-    touched.value.phone = true
+// Ajout de l'état pour afficher un message d'erreur global
+const formError = ref('');
+
+const submitForm = async () => {
+  try {
+    // Réinitialiser le message d'erreur
+    formError.value = '';
     
-    // Only submit if no validation errors
-    if (!emailError.value && !phoneError.value) {
-        console.log('Form submitted:', formData.value)
+    // Nettoyer les données du formulaire pour éviter les espaces vides
+    formData.firstName = formData.firstName.trim();
+    formData.lastName = formData.lastName.trim();
+    formData.email = formData.email.trim();
+    formData.phone = formData.phone.trim();
+    formData.message = formData.message.trim();
+    
+    // Marquer tous les champs comme touchés pour afficher les erreurs potentielles
+    Object.keys(touched.value).forEach(field => {
+      touched.value[field] = true;
+    });
+
+    // Vérification du honeypot côté client
+    if (formData.honeypot) {
+      console.warn('Bot détecté. Formulaire ignoré.');
+      return;
     }
-}
+    
+    // Double vérification manuelle de validité avant envoi
+    if (!formData.email || !isValidEmail(formData.email) || 
+        !formData.firstName.trim() || 
+        !formData.lastName.trim() || 
+        !formData.message.trim() || 
+        !formData.subject ||
+        (formData.phone.trim() && !isValidPhone(formData.phone))) {
+      console.warn('Formulaire invalide, envoi bloqué');
+      formError.value = 'Veuillez remplir correctement tous les champs obligatoires';
+      return;
+    }
+    
+    const res = await $fetch('/api/contact', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (res.success) {
+      alert('Message envoyé avec succès !');
+      // Réinitialiser le formulaire
+      Object.keys(formData).forEach(key => formData[key] = '');
+      // Réinitialiser les champs touchés
+      Object.keys(touched.value).forEach(field => {
+        touched.value[field] = false;
+      });
+    } else {
+      console.error('Erreur serveur:', res);
+      formError.value = res.message || "Erreur lors de l'envoi du message.";
+    }
+  } catch (error) {
+    console.error(error);
+    formError.value = "Erreur de connexion au serveur.";
+  }
+};
 </script>
 

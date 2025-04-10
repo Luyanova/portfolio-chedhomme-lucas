@@ -1,5 +1,5 @@
 <template>
-  <div class="spline-container" ref="container"></div>
+  <div ref="container" class="spline-container"/>
 </template>
 
 <script setup>
@@ -20,7 +20,7 @@ const container = ref(null)
 let splineViewer = null
 
 onMounted(async () => {
-  if (process.client) {
+  if (import.meta.client) {
     try {
       // Dynamically import the SplineViewer web component
       await import('@splinetool/viewer')

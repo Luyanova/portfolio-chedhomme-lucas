@@ -67,8 +67,8 @@
           <SplineViewer 
             :key="'spline-' + themeStore.isDeveloperMode"
             :url="themeStore.isDeveloperMode 
-              ? 'https://prod.spline.design/5HgjZo3KXZMjX1IA/scene.splinecode' 
-              : 'https://prod.spline.design/1citcBVm74CbPxH2/scene.splinecode'" 
+              ? 'https://prod.spline.design/f7LETq-YglWSVxnv/scene.splinecode' 
+              : 'https://prod.spline.design/AHq5HPpWNWJyUt7R/scene.splinecode'" 
           />
         </Transition>
       </div>

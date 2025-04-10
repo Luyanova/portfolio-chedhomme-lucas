@@ -238,7 +238,7 @@
         "Le vert c'est la couleur de l'espoir"
       </h2>
       <div class="w-auto h-48 rounded-sm overflow-hidden">
-        <SplineViewer url="https://prod.spline.design/bJfQVhX-zoeNIhss/scene.splinecode" />
+        <SplineViewer url="https://prod.spline.design/Hhf5jQabFQZgybCe/scene.splinecode" />
        </div>
     </div>
   </section>
