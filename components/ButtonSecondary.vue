@@ -23,8 +23,8 @@
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from 'vue';
-  import { setCursor } from '~/assets/typescript/cursor';
+
+
 
   const props = defineProps({
     label: {
@@ -53,20 +53,6 @@
     }
   });
 
-  const buttonRef = ref<HTMLElement | null>(null);
-  let cleanupCursor: (() => void) | null = null;
-
-  onMounted(() => {
-    if (buttonRef.value) {
-      // Removed setCursor call
-    }
-  });
-
-  onUnmounted(() => {
-    if (cleanupCursor) {
-      cleanupCursor();
-    }
-  });
 
   const handleNavigation = (event: MouseEvent) => {
     if (props.to) {
