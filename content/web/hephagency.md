@@ -37,8 +37,8 @@ galleryImages:
   - /img/projects/web/hephagency/contactHephagency.png
   - /img/projects/web/hephagency/mockupPhoneHephangency.png
   - /img/projects/web/hephagency/menuHephagency.png
-  - /img/projects/web/hephagency/contactHephagency.png
   - /img/projects/web/hephagency/logoHephagency.png
+  - /img/projects/web/hephagency/contactHephagency.png
 ---
 
 ##
