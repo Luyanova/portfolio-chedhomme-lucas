@@ -6,7 +6,7 @@
           :src="project.cover1" 
           :alt="`${project.title} Cover 2`"
           format="webp"
-          quality="20"
+          quality="40"
           loading="lazy"
           fit="cover"
         />

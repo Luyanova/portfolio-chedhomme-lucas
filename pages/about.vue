@@ -233,7 +233,7 @@
   </section>
 
   <section class="bg-secondary-500">
-    <div class="flex flex-col px-4 py-10 h-[70vh] justify-center items-center lg:gap-10">
+    <div class="flex flex-col px-4 py-10 h-[70vh] justify-center items-center gap-10 lg:gap-20">
       <h2 class="text-primary-500 font-['Owners_Wide'] text-4xl font-bold italic leading-[120%] text-center lg:w-1/2 2xl:text-5xl">
         "Le vert c'est la couleur de l'espoir"
       </h2>
