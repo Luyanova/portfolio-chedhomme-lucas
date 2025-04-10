@@ -120,7 +120,7 @@
       
       <!-- Top right project -->
       <div ref="project1" class="absolute right-[-30vw] top-[30vh] w-[70vw] z-30 sm:w-1/2 sm:right-[-10vw] lg:w-1/4 lg:right-[-5vw] lg:top-[30vh]">
-        <LightBoxProject id="web/my-first-web-project" />
+        <LightBoxProject id="web/team-square" />
       </div>
       
       <!-- Left project -->
@@ -199,7 +199,7 @@
       
       <!-- Bottom left project -->
       <div ref="project8" class="absolute left-[5vw] top-[110vh] w-[50vw] sm:w-[40vw] lg:w-[20vw]">
-        <LightBoxProject id="multimedia/shay-cabaret" />
+        <LightBoxProject id="web/team-square" />
       </div>
 
       <!-- Bottom left project -->
