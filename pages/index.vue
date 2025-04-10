@@ -189,7 +189,7 @@
     <section ref="projectSection2" class="relative h-[250vh] w-full py-20 overflow-hidden flex justify-center ">
       <!-- Top left project -->
       <div ref="project6" class="absolute left-[25vw] top-[40vh] w-[70vw] sm:w-[60vw] lg:w-[30vw]">
-        <LightBoxProject id="web/my-first-web-project" />
+        <LightBoxProject id="web/team-square" />
       </div>
       
       <!-- right project -->
