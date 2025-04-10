@@ -13,7 +13,7 @@
                 <div class="flex flex-col gap-4 py-10 sm:flex-row">
                     <div class="flex flex-col gap-4 sm:w-1/2">
                         <div class="w-full h-50 rounded-sm overflow-hidden sm:h-90 2xl:h-160">
-                            <SplineViewer url="https://prod.spline.design/1citcBVm74CbPxH2/scene.splinecode" />
+                            <SplineViewer url="https://prod.spline.design/AHq5HPpWNWJyUt7R/scene.splinecode" />
                         </div>
                         <div>
                             <ButtonPrimary  
@@ -95,7 +95,7 @@
                             v-for="article in topProjects" 
                             :key="article._path" 
                             :article="article" 
-                            class="w-[90vw] sm:w-[70vw] lg:w-1/3 h-[100%] 2xl:w-[35vw]"
+                            class="w-[90vw] sm:w-[70vw] lg:w-[25vw] h-[100%] 2xl:w-[35vw]"
                         />
                     </div>
                     <!-- Espace après la dernière carte pour éviter qu'elle soit coupée -->
