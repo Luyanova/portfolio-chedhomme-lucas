@@ -15,9 +15,10 @@ projectUrl: ""
 date: Janvier 2024
 team:
   - name: Tanguy Caruel
-    site: https://tanguycaruel.com
-introduction: Nebuloïd est une webapp qui réinvente le journal scientifique
-  spatial pour le rendre fun, accessible et ultra visuel.
+    site: https://www.tanguycaruel.com/
+introduction: Nebuloïd est un projet étudiant de création de webapp qui
+  réinvente le journal scientifique spatial pour le rendre fun, accessible et
+  ultra visuel.
 description: Pensée pour les ados et jeunes adultes, Nebuloïd vulgarise
   l’actualité astronomique avec un ton ludique et des articles courts. Côté
   tech, l’appli repose sur un stack React + Laravel, avec un design inspiré du
