@@ -19,6 +19,8 @@ team:
   - name: Lucas Dombrowski
     site: https://old.lucasdombrowski.com/
   - name: Thomas Joly
+  - name: Émilien Grand
+  - name: Luc Rousseau
 introduction: Hephagency, c’est l’alchimie entre créativité brute et maîtrise
   technique. Une agence web à ton image, où chaque projet est forgé avec
   caractère.
