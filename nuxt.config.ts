@@ -28,6 +28,14 @@ export default defineNuxtConfig({
   },
   modules: ['@nuxtjs/seo', '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@pinia/nuxt'],
   plugins: ['~/plugins/gsap.client', '~/plugins/cursor.client'],
+  runtimeConfig: {
+    // Clés privées uniquement accessibles côté serveur
+    resendApiKey: process.env.RESEND_API_KEY,
+    // Clés publiques exposées au client
+    public: {
+      // publicVar: 'valeur publique'
+    }
+  },
   app: {
     head: {
       titleTemplate: '%s | Lucas Chedhomme',
