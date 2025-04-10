@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['gsap'],
   },
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', '~/assets/css/cursor.css'],
   vite: {
     plugins: [
       tailwindcss(),
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@nuxtjs/seo', '@nuxt/content', '@nuxt/eslint', '@nuxt/image', '@pinia/nuxt'],
-  plugins: ['~/plugins/gsap.client'],
+  plugins: ['~/plugins/gsap.client', '~/plugins/cursor.client'],
   app: {
     head: {
       titleTemplate: '%s | Lucas Chedhomme',

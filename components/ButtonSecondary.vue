@@ -58,16 +58,7 @@
 
   onMounted(() => {
     if (buttonRef.value) {
-      cleanupCursor = setCursor(buttonRef.value, {
-        size: {
-          default: 30,
-          hover: 45
-        },
-        offset: {
-          x: 15,
-          y: 15
-        }
-      });
+      // Removed setCursor call
     }
   });
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick, computed } from 'vue'
+import { ref, onMounted, nextTick, computed, onBeforeUnmount } from 'vue'
 import WebProjectCard from '~/components/WebProjectCard.vue'
 
 useSeoMeta({
@@ -76,9 +76,37 @@ const preloadAllImages = async () => {
   }
 }
 
+// Référence pour stocker l'instance ScrollTrigger actuelle
+const currentScrollTrigger = ref(null)
+
+// Fonction pour nettoyer les ScrollTriggers existants
+const cleanupScrollTriggers = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
+  
+  // Tuer le ScrollTrigger actuel s'il existe
+  if (currentScrollTrigger.value) {
+    currentScrollTrigger.value.kill();
+    currentScrollTrigger.value = null;
+  }
+  
+  // Nettoyer tous les ScrollTriggers associés à la section des projets
+  if ($gsap && $gsap.ScrollTrigger) {
+    const triggers = $gsap.ScrollTrigger.getAll();
+    triggers.forEach((trigger: { vars?: { trigger: any } } ) => {
+      if (trigger.vars && trigger.vars.trigger === projectsSection.value) {
+        trigger.kill();
+      }
+    });
+  }
+}
+
 // Configurer l'animation GSAP après le chargement des images
 const setupAnimation = () => {
   if (!projectsSection.value || !posts.value) return;
+
+  // Nettoyer les animations précédentes avant d'en créer de nouvelles
+  cleanupScrollTriggers();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
@@ -148,6 +176,9 @@ const setupAnimation = () => {
       }
     });
     
+    // Stocker la référence du ScrollTrigger pour pouvoir le nettoyer plus tard
+    currentScrollTrigger.value = tl.scrollTrigger;
+    
     // 3. Animer chaque carte individuellement avec un décalage (stagger)
     cardElements.forEach((card, index) => {
       // Calculer le décalage vertical pour l'effet d'empilement
@@ -157,13 +188,13 @@ const setupAnimation = () => {
       // pour permettre une réversibilité correcte de l'animation
       tl.fromTo(card, 
         {
-          yPercent: 150,
+          yPercent: 170,
           scale: 1.1,
           rotation: 5,
           visibility: 'hidden',
         },
         {
-          yPercent: -10 + yOffset,    // Position finale (légèrement au-dessus + décalage)
+          yPercent: -20 + yOffset,    // Position finale (légèrement au-dessus + décalage)
           scale: 0.90,                // Taille finale réduite
           rotation: 0,                // Rotation finale neutre
           visibility: 'visible',      // Rendre visible pendant l'animation
@@ -177,28 +208,41 @@ const setupAnimation = () => {
     // Ajouter un petit délai à la fin pour que la dernière carte reste visible un peu plus longtemps avant le dépinglage
     tl.to({}, { duration: 0.5 }); 
 
-    // 4. Ajouter les gestionnaires d'événements pour le survol (inchangé)
+    // 4. Supprimer les écouteurs d'événements existants avant d'en ajouter de nouveaux
     cardElements.forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        $gsap.to(card, {
-          y: '-=5', // Ajuster la position y relative
-          boxShadow: '0 30px 60px rgba(10, 242, 157, 0.25), 0 15px 30px rgba(10, 242, 157, 0.15)',
-          duration: 0.3,
-          overwrite: true
-        });
-      });
+      card.removeEventListener('mouseenter', handleMouseEnter);
+      card.removeEventListener('mouseleave', handleMouseLeave);
       
-      card.addEventListener('mouseleave', () => {
-        $gsap.to(card, {
-          y: '+=5', // Revenir à la position y relative
-          boxShadow: '0 15px 50px rgba(0, 0, 0, 0.35), 0 10px 25px rgba(0, 0, 0, 0.2)',
-          duration: 0.3,
-          overwrite: true
-        });
-      });
+      card.addEventListener('mouseenter', handleMouseEnter);
+      card.addEventListener('mouseleave', handleMouseLeave);
     });
   }); // Fin de nextTick
 }
+
+// Fonctions de gestionnaire d'événement pour éviter les doublons
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const handleMouseEnter = function(this: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
+  $gsap.to(this, {
+    y: '-=5', // Ajuster la position y relative
+    boxShadow: '0 30px 60px rgba(10, 242, 157, 0.25), 0 15px 30px rgba(10, 242, 157, 0.15)',
+    duration: 0.3,
+    overwrite: true
+  });
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const handleMouseLeave = function(this: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { $gsap } = useNuxtApp() as unknown as { $gsap: any };
+  $gsap.to(this, {
+    y: '+=5', // Revenir à la position y relative
+    boxShadow: '0 15px 50px rgba(0, 0, 0, 0.35), 0 10px 25px rgba(0, 0, 0, 0.2)',
+    duration: 0.3,
+    overwrite: true
+  });
+};
 
 // Fonction pour réinitialiser l'état de l'animation
 const resetAnimationState = () => {
@@ -215,14 +259,41 @@ const resetAnimationState = () => {
       zIndex: index
     });
   });
+  
+  // Rendre la première carte visible
+  if (cardElements[0]) {
+    $gsap.set(cardElements[0], { visibility: 'visible' });
+  }
 };
+
+// Ajouter un écouteur pour le redimensionnement de la fenêtre
+const handleResize = () => {
+  cleanupScrollTriggers();
+  resetAnimationState();
+  setupAnimation();
+}
+
+// Créer une fonction pour tout réinitialiser et redémarrer l'animation
+const refreshAnimation = () => {
+  preloadAllImages().then(() => {
+    cleanupScrollTriggers();
+    resetAnimationState();
+    setupAnimation();
+  });
+}
 
 onMounted(() => {
   // Précharger les images, puis configurer l'animation
-  preloadAllImages().then(() => {
-    resetAnimationState();
-    setupAnimation();
-  })
+  refreshAnimation();
+  
+  // Ajouter un écouteur pour le redimensionnement de la fenêtre
+  window.addEventListener('resize', handleResize);
+})
+
+// Nettoyer les écouteurs et les ScrollTriggers lors du démontage
+onBeforeUnmount(() => {
+  cleanupScrollTriggers();
+  window.removeEventListener('resize', handleResize);
 })
 </script>
 
