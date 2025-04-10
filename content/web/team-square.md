@@ -16,7 +16,7 @@ projectUrl: https://team-square.fr/
 date: Septembre 2024
 team:
   - name: Tanguy Caruel
-    site: https://jane.example.com
+    site: https://www.tanguycaruel.com/project/team-square
   - name: Valentin Vérin
 introduction: Team Square est la plus grande base de loisirs multi-activités des
   Hauts-de-France, située à Hénin-Beaumont, près de Lille. Avec plus de 60 000
