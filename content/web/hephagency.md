@@ -3,8 +3,8 @@ title: Hephagency
 isTopProject: true
 summary: Mon agence créative. Design, dev & branding sur-mesure. Une forge
   digitale où naissent des projets à fort impact.
-cover1: /img/projects/web/teamSquare/mockupTeamSquare.png
-cover2: /img/projects/web/awesome-app/cover2.png
+cover1: /img/projects/web/hephagency/mockupHephangency.png
+cover2: /img/projects/web/hephagency/logoHephagency.png
 tags:
   - Branding
   - Gestion de projet
@@ -34,8 +34,11 @@ objective: Créer une structure professionnelle et créative qui me permet de
   collaborer avec des clients, développer leur image de marque et concevoir des
   interfaces web puissantes et cohérentes.
 galleryImages:
-  - /img/projects/web/awesome-app/chevalierAgenou.png
-  - /img/projects/web/awesome-app/chevalierHache.png
+  - /img/projects/web/hephagency/contactHephagency.png
+  - /img/projects/web/hephagency/mockupPhoneHephangency.png
+  - /img/projects/web/hephagency/menuHephagency.png
+  - /img/projects/web/hephagency/contactHephagency.png
+  - /img/projects/web/hephagency/logoHephagency.png
 ---
 
 ##
