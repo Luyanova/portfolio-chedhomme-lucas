@@ -1,7 +1,7 @@
 ---
-title: "Photos Catho"
+title: "Concert Université Catholique"
 isTopProject: true
-summary: "Photographie de la soirée de remise des diplômes de la Catho de Lille, capturant les moments de célébration et de réussite des étudiants."
+summary: "Photographie du concert immersif du Requiem de Verdi à la chapelle universitaire de l’Université Catholique de Lille, célébrant ses 150 ans avec une fusion d’art et de technologie.​"
 cover1: "/img/projects/multimedia/catho/catho1.png"
 cover2: "/img/projects/multimedia/catho/catho2.png"
 tags:
@@ -10,18 +10,18 @@ tools:
   - Appareil Photo
   - Lightroom
 projectUrl: "https://www.instagram.com/p/C_gNfsnIcLP/?img_index=1"
-date: "Juin 2024"
+date: "Mars 2025"
 team:
   - name: "Hugo Reynaert"
     site: "https://www.instagram.com/somarecord/"
-introduction: "En juin 2024, j'ai photographié la soirée de remise des diplômes de la Catho de Lille, un événement marquant pour les étudiants."
-description: "J'ai documenté les moments de joie et de fierté des diplômés, leurs familles et leurs professeurs, en capturant l'atmosphère unique de cette célébration académique."
-objective: "Immortaliser les moments clés de cette soirée de remise des diplômes, en mettant en valeur les émotions et les réussites des étudiants."
+introduction: "Couverture photo d’un concert immersif exceptionnel dans la chapelle universitaire de l’Université Catholique de Lille, célébrant les 150 ans de ce lieu emblématique."
+description: "Dans le cadre des festivités marquant les 150 ans de la chapelle universitaire, j’ai été mandaté par l’Université Catholique de Lille pour capturer l’essence d’un événement unique : deux représentations immersives du Requiem de Verdi, les 15 et 16 mars 2025. Ces concerts ont réuni 350 artistes, musiciens et choristes, accompagnés de jeux de lumières avancés, créant une expérience sensorielle inédite pour les spectateurs. Mon objectif était de documenter visuellement cette fusion entre patrimoine architectural, performance musicale et technologie lumineuse."
+objective: "Fournir une couverture visuelle authentique et immersive de cet événement historique, mettant en valeur l’interaction entre l’architecture sacrée, la musique classique et les installations lumineuses contemporaines."
 galleryImages:
   - path: /img/projects/multimedia/catho/catho3.png
-    legend: Remise des diplômes
+    legend: Photo de l'orchestre
   - path: /img/projects/multimedia/catho/catho4.png
-    legend: Célébration des diplômés
+    legend: Photo de l'orchestre
   - path: /img/projects/multimedia/catho/catho5.png
-    legend: Moments de joie
+    legend: Photo de l'orchestre
 ---
