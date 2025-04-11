@@ -1,6 +1,6 @@
 <template>
     <button 
-      class="bg-primary-500 relative flex items-end justify-end align-end gap-2 px-3 py-2 border border-grey-600 rounded-xs lg:hidden transition-[width] duration-300 ease-in-out"
+      class="bg-primary-500 relative flex items-end justify-end align-end gap-2 px-3 py-2 border border-grey-600 rounded-sm lg:hidden transition-[width] duration-300 ease-in-out"
       :class="{ 'w-[288px] shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]': isOpen }"
       aria-label="Menu"
       @click="$emit('toggle')"

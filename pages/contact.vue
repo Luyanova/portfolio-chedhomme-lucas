@@ -5,7 +5,7 @@
                 <NuxtImg
                     src="/img/contact/lucasChedhomme.jpg" 
                     alt="Lucas Chedhomme" 
-                    class="w-full h-auto object-cover rounded-xs" 
+                    class="w-full h-auto object-cover rounded-sm" 
                     loading="lazy"
                     format="webp"
                     quality="50"

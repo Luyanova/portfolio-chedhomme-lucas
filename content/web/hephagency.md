@@ -21,26 +21,31 @@ team:
   - name: Thomas Joly
   - name: Émilien Grand
   - name: Luc Rousseau
-introduction: Hephagency, c’est l’alchimie entre créativité brute et maîtrise
+introduction: Hephagency, c'est l'alchimie entre créativité brute et maîtrise
   technique. Une agence web à ton image, où chaque projet est forgé avec
   caractère.
-description: "Hephagency est l’agence que j’ai fondée dans le cadre de mon
-  projet de fin d’études en MMI. Inspirée de l’univers d’Héphaïstos, dieu
-  forgeron, elle incarne une vision créative et technique du web. L’agence forge
+description: "Hephagency est l'agence que j'ai fondée dans le cadre de mon
+  projet de fin d'études en MMI. Inspirée de l'univers d'Héphaïstos, dieu
+  forgeron, elle incarne une vision créative et technique du web. L'agence forge
   des expériences numériques sur mesure, pensées pour des marques ambitieuses en
-  quête d’identité forte. J’ai d’abord conçu son branding et son site, avant de
-  prendre en main l’ensemble de la gestion de projet : direction artistique,
+  quête d'identité forte. J'ai d'abord conçu son branding et son site, avant de
+  prendre en main l'ensemble de la gestion de projet : direction artistique,
   stratégie digitale, relation client… tout est pensé pour allier fond et forme
   avec exigence."
 objective: Créer une structure professionnelle et créative qui me permet de
   collaborer avec des clients, développer leur image de marque et concevoir des
   interfaces web puissantes et cohérentes.
 galleryImages:
-  - /img/projects/web/hephagency/contactHephagency.png
-  - /img/projects/web/hephagency/mockupPhoneHephangency.png
-  - /img/projects/web/hephagency/menuHephagency.png
-  - /img/projects/web/hephagency/logoHephagency.png
-  - /img/projects/web/hephagency/contactHephagency.png
+  - path: /img/projects/web/hephagency/contactHephagency.png
+    legend: Page de contact du site d'Hephagency
+  - path: /img/projects/web/hephagency/mockupPhoneHephangency.png
+    legend: Mockups du site d'Hephgency sur téléphone
+  - path: /img/projects/web/hephagency/menuHephagency.png
+    legend: Menu du site d'Hephagency
+  - path: /img/projects/web/hephagency/logoHephagency.png
+    legend: Logo de l'agence web Hephagency
+  - path: /img/projects/web/hephagency/mockupHephangency.png
+    legend: Page d'accueil du site d'Hephagency
 ---
 
 ##

@@ -125,22 +125,22 @@
       
       <!-- Left project -->
       <div ref="project2" class="absolute left-[-10vw] top-[60vh] w-[65vw] z-10 sm:w-3/5 sm:left-[-5vw] lg:w-1/6 lg:left-[10vw] lg:top-[40vh]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="web/hephagency"/>
       </div>
       
       <!-- Bottom right project -->
       <div ref="project3" class="absolute right-0 top-[90vh] w-[70vw] z-20 lg:w-1/4 lg:right-[20vw] lg:top-[90vh]">
-        <LightBoxProject id="multimedia/shay-cabaret" />
+        <LightBoxProject id="multimedia/cabaret" />
       </div>
 
       <!-- Bottom left project -->
       <div ref="project4" class="absolute left-0 top-[130vh] w-[65vw] z-40 lg:w-1/4 lg:left-[25vw] lg:top-[70vh]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="web/nebuloid"/>
       </div>
 
       <!-- Bottom Right 2 project -->
       <div ref="project5" class="absolute right-[10vw] top-[160vh] w-[40vw] z-90 lg:w-1/5 lg:left-[-5vw] lg:top-[80vh]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="multimedia/interview-damon"/>
       </div>
     </section>
 
@@ -166,7 +166,7 @@
           class="w-full object-cover rounded-sm sm:w-1/2 lg:w-1/3 lg:max-h-[80vh]"
           loading="lazy"
           format="webp"
-          quality="50"
+          quality="80"
         />
         <div class="flex flex-col gap-[25vh] sm:gap-0 sm:justify-between">
           <h1 
@@ -189,31 +189,31 @@
     <section ref="projectSection2" class="relative h-[250vh] w-full py-20 overflow-hidden flex justify-center ">
       <!-- Top left project -->
       <div ref="project6" class="absolute left-[25vw] top-[40vh] w-[70vw] sm:w-[60vw] lg:w-[30vw]">
-        <LightBoxProject id="web/team-square" />
+        <LightBoxProject id="multimedia/interview-leo-svr" />
       </div>
       
       <!-- right project -->
       <div ref="project7" class="absolute right-[25vw] top-[80vh] w-[60vw] sm:w-[50vw] lg:w-[25vw]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="multimedia/club-porto"/>
       </div>
       
       <!-- Bottom left project -->
       <div ref="project8" class="absolute left-[5vw] top-[110vh] w-[50vw] sm:w-[40vw] lg:w-[20vw]">
-        <LightBoxProject id="web/team-square" />
+        <LightBoxProject id="multimedia/portrait-compil" />
       </div>
 
       <!-- Bottom left project -->
       <div ref="project9" class="absolute left-[-5vw] top-[145vh] w-[65vw] sm:w-[55vw] lg:w-[27.5vw]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="multimedia/aftermovie-rawww"/>
       </div>
 
       <!-- Bottom Right 2 project -->
       <div ref="project10" class="absolute right-[10vw] top-[150vh] w-[40vw] sm:w-[50vw] sm:top-[160vh] lg:w-[35vw]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="multimedia/studio-porto"/>
       </div>
 
       <div ref="project11" class="absolute left-[35vw] top-[190vh] w-[80vw] sm:w-[40vw] lg:w-[20vw]">
-        <LightBoxProject id="web/team-square"/>
+        <LightBoxProject id="multimedia/dimension"/>
       </div>
     </section>
   </div>

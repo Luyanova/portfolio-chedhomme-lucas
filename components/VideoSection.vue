@@ -7,7 +7,7 @@
           class="w-full h-auto object-cover rounded-sm"
           loading="eager"
           priority
-          quality="50"
+          quality="80"
           alt="Aperçu de mon processus créatif"
         />
       </div>

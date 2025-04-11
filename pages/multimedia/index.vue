@@ -129,7 +129,7 @@ const selectProject = (project: MultimediaProject) => {
           </p>
         </div>
         <div class="flex flex-col gap-2 pb-20 sm:pb-15 sm:gap-0 sm:flex-row-reverse">
-          <div class="w-full overflow-hidden rounded-xs">
+          <div class="w-full overflow-hidden rounded-sm">
             <NuxtImg
               src="/img/projects/multimedia/vladimirMockup.png"
               alt="Projet multimédia Vladimir mockup"
@@ -139,7 +139,7 @@ const selectProject = (project: MultimediaProject) => {
               class="w-full h-auto"
             />
           </div>
-          <div class="w-full sm:h-120 lg:h-160 2xl:h-300 overflow-hidden rounded-xs">
+          <div class="w-full sm:h-120 lg:h-160 2xl:h-300 overflow-hidden rounded-sm">
             <NuxtImg
               src="/img/projects/multimedia/donut3D.png"
               alt="Mes donuts 3D blender Guru"
@@ -160,28 +160,28 @@ const selectProject = (project: MultimediaProject) => {
         </h2>
         <div class="flex items-center flex-wrap lg:flex-nowrap mb-4 gap-2 lg:gap-4">
           <span 
-            class="cursor-pointer px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
+            class="cursor-pointer px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
             :class="activeTag === null ? 'text-grey-50 bg-secondary-500' : 'text-grey-500 bg-grey-300'"
             @click="activeTag = null"
           >
             Tous les projets
           </span>
           <span 
-            class="cursor-pointer px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
+            class="cursor-pointer px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
             :class="activeTag === 'Graphisme' ? 'text-grey-50 bg-secondary-500' : 'text-grey-500 bg-grey-300'"
             @click="toggleTag('Graphisme')"
           >
             Graphisme
           </span>
           <span 
-            class="cursor-pointer px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
+            class="cursor-pointer px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
             :class="activeTag === 'Photographie' ? 'text-grey-50 bg-secondary-500' : 'text-grey-500 bg-grey-300'"
             @click="toggleTag('Photographie')"
           >
             Photographie
           </span>
           <span 
-            class="cursor-pointer px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
+            class="cursor-pointer px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-sm sm:text-lg font-normal leading-[150%] transition-colors whitespace-nowrap 2xl:text-xl"
             :class="activeTag === 'Vidéo' ? 'text-grey-50 bg-secondary-500' : 'text-grey-500 bg-grey-300'"
             @click="toggleTag('Vidéo')"
           >
@@ -264,14 +264,14 @@ const selectProject = (project: MultimediaProject) => {
 
 
     <section>
-      <div class="w-full overflow-hidden rounded-xs pt-10 sm:pt-20 lg:pt-40">
+      <div class="w-full overflow-hidden rounded-sm pt-10 sm:pt-20 lg:pt-40">
         <NuxtImg
           src="/img/projects/multimedia/justiceAbout.png"
           alt="Projet multimédia justiceAbout"
           format="webp"
           quality="80"
           loading="lazy"
-          class="w-full h-full object-cover rounded-xs"
+          class="w-full h-full object-cover rounded-sm"
         />
       </div>
     </section>

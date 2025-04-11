@@ -2,13 +2,13 @@
   <div class="lightbox-container relative w-40 h-35 2xl:w-80 2xl:h-70" @click="$emit('click')">
     <!-- Image thumbnail avec dégradé et icône en coin inférieur droit -->
     <div 
-      class="relative cursor-pointer rounded-xs overflow-hidden w-full h-full"
+      class="relative cursor-pointer rounded-sm overflow-hidden w-full h-full"
     >
       <NuxtImg 
         :src="src" 
         :alt="alt"
         format="webp"
-        quality="50"
+        quality="80"
         loading="lazy"
         fit="cover"
         class="w-full h-full object-cover"

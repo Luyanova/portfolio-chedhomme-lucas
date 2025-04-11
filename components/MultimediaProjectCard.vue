@@ -8,7 +8,7 @@
             :src="project.cover1" 
             :alt="project.title"
             format="webp"
-            quality="50"
+            quality="80"
             loading="lazy"
             fit="cover" 
             class="w-full h-full rounded-sm object-cover" />
@@ -67,7 +67,7 @@
                     <span 
                       v-for="tag in project.tags" 
                       :key="tag" 
-                      class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
+                      class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-base 2xl:text-lg font-normal leading-[150%] tracking-[0.64px]"
                     >
                       {{ tag }}
                     </span>

@@ -7,7 +7,7 @@ summary: Refonte complète du site WordPress de Team Square, intégrant une
 cover1: /img/projects/web/teamSquare/mockupTeamSquare.png
 cover2: /img/projects/web/teamSquare/logoTeamSquare.png
 tags:
-  - Développent
+  - Développement
   - Gestion de Projet
 tools:
   - Wordpress
@@ -34,10 +34,14 @@ objective: Moderniser la présence en ligne de Team Square en développant un si
   WordPress performant, mettant en valeur la diversité des activités offertes,
   tout en assurant une navigation fluide et une expérience utilisateur optimale.
 galleryImages:
-  - /img/projects/web/teamSquare/reservationTeamSquare.png
-  - /img/projects/web/teamSquare/reservationPhoneTeamSquare.png
-  - /img/projects/web/teamSquare/teamSquareEvent.png
-  - /img/projects/web/teamSquare/logoTeamSquare.png
+  - path: /img/projects/web/teamSquare/reservationTeamSquare.png
+    legend: Page d'article du site Team Square
+  - path: /img/projects/web/teamSquare/reservationPhoneTeamSquare.png
+    legend: Réservation du site Team Square
+  - path: /img/projects/web/teamSquare/teamSquareEvent.png
+    legend: Présentation des salles du site Team Square
+  - path: /img/projects/web/teamSquare/logoTeamSquare.png
+    legend: Logo de Team Square
 ---
 
 ##

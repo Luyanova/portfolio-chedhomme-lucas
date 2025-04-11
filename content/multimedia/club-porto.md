@@ -1,23 +1,28 @@
 ---
-title: Boîtes de nuit Porto
-isTopProject: "true"
-summary: Des photos de mes amis dans un studio improvisé
-cover1: /img/projects/multimedia/clubPorto/clubPorto.jpg
-cover2: /img/projects/web/awesome-app/cover2.png
+title: "Club Porto"
+isTopProject: false
+summary: "Photographe en club au Portugal pendant mon Erasmus 2024, j'ai collaboré avec Ricardo Baptista pour couvrir les soirées les plus emblématiques de la scène locale."
+cover1: "/img/projects/multimedia/clubPorto/clubPorto.png"
+cover2: "/img/projects/multimedia/clubPorto/clubPorto2.png"
 tags:
   - Photographie
-  - Studio
+  - Erasmus
 tools:
   - Appareil Photo
   - Lightroom
 projectUrl: ""
-date: Mars 2025
-team: ""
-introduction: A brief overview of this amazing web application built with Nuxt.
-description: A more detailed explanation of the project, challenges faced, and
-  solutions implemented.
-objective: The goal was to create a fast, responsive, and accessible portfolio showcase.
+date: "Mars 2024"
+team: []
+introduction: "Lors de mon Erasmus en 2024, j'ai eu l'opportunité de collaborer avec le photographe portugais Ricardo Baptista en tant que photographe de soirées en club."
+description: "Basé au Portugal pendant plusieurs mois, j'ai intégré l'équipe de Ricardo Baptista, photographe renommé pour son travail en nightlife. Mon rôle consistait à capturer l'énergie brute des soirées en club : lumières, émotions, ambiance... Cette expérience m'a permis de renforcer mes compétences en photographie événementielle dans des conditions de lumière complexe et de m'immerger dans une culture musicale et festive différente, tout en évoluant dans un environnement professionnel à l'étranger."
+objective: "Développer mon œil photographique en contexte nightlife à l'international et apprendre à m'adapter rapidement aux ambiances et besoins des clients dans un environnement de travail rapide et exigeant."
 galleryImages:
-  - /img/projects/web/awesome-app/chevalierAgenou.png
-  - /img/projects/web/awesome-app/chevalierHache.png
+  - path: "/img/projects/multimedia/clubPorto/clubPorto.png"
+    legend: "Club Porto"
+  - path: "/img/projects/multimedia/clubPorto/clubPorto2.png"
+    legend: "Club Porto"
+  - path: "/img/projects/multimedia/clubPorto/clubPorto3.png"
+    legend: "Club Porto"
+  - path: "/img/projects/multimedia/clubPorto/clubPorto4.png"
+    legend: "Club Porto"
 ---

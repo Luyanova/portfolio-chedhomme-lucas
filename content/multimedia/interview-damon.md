@@ -1,25 +1,22 @@
 ---
-title: Interview Damon
-isTopProject: true
-summary: Interview de Damon sur le média Share Music
-cover1: /img/projects/multimedia/interviewDamon/coverDamon.png
-cover2: /img/projects/multimedia/shareMusic/shareMusicMockup2.png
+title: "Interview Damon"
+isTopProject: false
+summary: "Interview Instagram de Damon pour Share Music : une rencontre avec un artiste qui fait bouger la scène rap."
+cover1: "/img/projects/multimedia/interviewDamon/coverDamon.png"
+cover2: "/img/projects/multimedia/interviewDamon/damonItw2.png"
 tags:
   - Vidéo
+  - Interview
 tools:
   - Appareil Photo
   - Suite Adobe
-projectUrl: https://www.instagram.com/reel/DE5GPdzs_nD/
-date: Décembre 2024
+projectUrl: "https://www.instagram.com/reel/DE5GPdzs_nD/"
+date: "Janvier 2025"
 team:
-  - name: Jane Doe
-    site: https://jane.example.com
-  - name: John Smith
-introduction: A brief overview of this amazing web application built with Nuxt.
-description: A more detailed explanation of the project, challenges faced, and
-  solutions implemented.
-objective: The goal was to create a fast, responsive, and accessible portfolio showcase.
-galleryImages:
-  - /img/projects/web/awesome-app/chevalierAgenou.png
-  - /img/projects/web/awesome-app/chevalierHache.png
+  - name: "Ethan Poudroux"
+    site: "https://www.instagram.com/ethanpdrx_/"
+introduction: "Interview exclusive réalisée pour Share Music avec Damon, figure montante de la scène rap francophone."
+description: "Dans le cadre de notre série d'interviews, nous avons rencontré Damon pour parler de son actu, de son processus créatif et de sa vision de la scène rap. En tant que photographe et vidéaste, j'ai assuré la captation et le montage de l'interview, tout en veillant à conserver l'esthétique visuelle propre à Share Music. Ce format, diffusé sur Instagram, vise à offrir un échange authentique et percutant entre l'artiste et notre communauté."
+objective: "Donner la parole aux artistes, mettre en valeur leur parcours et créer un contenu qualitatif et accessible pour les fans de rap, tout en renforçant l'image de Share Music comme média de référence."
+galleryImages: []
 ---

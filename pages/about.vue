@@ -9,11 +9,11 @@
         <div class="w-full h-auto relative sm:w-1/3 sm:absolute sm:top-1/3 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/3 lg:w-1/5 lg:top-1/4">
           <NuxtImg 
             src="/img/about/portraitLucasChedhommeAbout.jpg" 
-            class="w-full h-full object-cover rounded-xs"
+            class="w-full h-full object-cover rounded-sm"
             loading="eager"
             priority
             format="webp"
-            quality="30"
+            quality="80"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-grey-900/70 via-transparent to-transparent pointer-events-none hidden sm:block"/>
         </div>
@@ -39,7 +39,7 @@
         <div class="w-full h-auto sm:w-1/2 lg:w-2/5 lg:h-130">
           <NuxtImg 
             src="/img/about/knightDither1.png" 
-            class="w-full h-full object-cover rounded-xs"
+            class="w-full h-full object-cover rounded-sm"
             loading="lazy"
             format="webp"
             quality="100"
@@ -102,7 +102,7 @@
       </div>
       <NuxtImg 
         src="/img/about/aboutSoftskills.png" 
-        class="w-full h-auto object-cover rounded-xs lg:min-w-1/2 lg:min-h-130"
+        class="w-full h-auto object-cover rounded-sm lg:min-w-1/2 lg:min-h-130"
         loading="lazy"
         format="webp"
         quality="80"
@@ -189,7 +189,7 @@
       </div>
       <NuxtImg 
         src="/img/about/portoAbout.jpg" 
-        class="w-full h-auto object-cover rounded-xs lg:min-w-1/2 lg:max-h-140 2xl:max-h-240"
+        class="w-full h-auto object-cover rounded-sm lg:min-w-1/2 lg:max-h-140 2xl:max-h-240"
         loading="lazy"
         format="webp"
         quality="80"

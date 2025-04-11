@@ -2,7 +2,7 @@
   <div ref="containerRef" class="lightbox-container relative w-full h-full ">
     <!-- Image thumbnail avec dégradé et icône en coin inférieur droit -->
     <div 
-      class="relative cursor-pointer rounded-xs overflow-hidden w-full h-full" 
+      class="relative cursor-pointer rounded-sm overflow-hidden w-full h-full" 
       @click.stop="open"
     >
       <NuxtImg 
@@ -37,7 +37,7 @@
         >
           <!-- Icône de fermeture en haut à gauche -->
           <button 
-            class="lightbox-close absolute top-6 left-6 z-100 p-3 bg-black/30 rounded-xs cursor-pointer"
+            class="lightbox-close absolute top-6 left-6 z-100 p-3 bg-black/30 rounded-sm cursor-pointer"
             type="button"
             aria-label="Fermer la lightbox"
             @click.stop="close"
@@ -51,10 +51,10 @@
             :src="src" 
             :alt="alt"
             format="webp"
-            quality="60"
+            quality="80"
             loading="eager"
             fit="contain"
-            class="max-w-full max-h-[90vh] object-contain rounded-xs"
+            class="max-w-full max-h-[90vh] object-contain rounded-sm"
           />
         </div>
       </div>

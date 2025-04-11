@@ -308,7 +308,7 @@ onBeforeUnmount(() => {
           format="webp"
           quality="80"
           loading="eager"
-          class="w-full h-full object-cover rounded-xs"
+          class="w-full h-full object-cover rounded-sm"
         />
       </div>
       <div class="flex flex-col gap-2">

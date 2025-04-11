@@ -41,7 +41,7 @@
         >
           <!-- Icône de fermeture en haut à gauche -->
           <button 
-            class="lightbox-close absolute top-6 left-6 z-10 p-3 bg-black/30 rounded-xs cursor-pointer"
+            class="lightbox-close absolute top-6 left-6 z-10 p-3 bg-black/30 rounded-sm cursor-pointer"
             type="button"
             aria-label="Fermer la lightbox"
             @click.stop="close"
@@ -56,10 +56,10 @@
             :src="project?.cover1" 
             :alt="project?.title"
             format="webp"
-            quality="60"
+            quality="80"
             loading="eager"
             fit="contain"
-            class="max-w-full max-h-[70vh] object-contain rounded-xs"
+            class="max-w-full max-h-[70vh] object-contain rounded-sm"
           />
           <h2 class="text-grey-50 text-[20px] font-['Owners_Wide'] font-medium leading-[140%] tracking-[0.4px] mb-2">{{ project?.title || 'Projet' }}</h2>
           </div>

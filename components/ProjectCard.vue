@@ -1,7 +1,7 @@
 <template>
   <div class="project-card flex flex-col gap-4 overflow-hidden p-2">
     <!-- Image de couverture -->
-    <div class="w-full h-64 sm:h-92 overflow-hidden rounded-xs flex-shrink-0 lg:h-64 2xl:h-160">
+    <div class="w-full h-64 sm:h-92 overflow-hidden rounded-sm flex-shrink-0 lg:h-64 2xl:h-160">
       <NuxtImg 
         :src="article.cover1" 
         :alt="article.title"
@@ -25,7 +25,7 @@
         <span 
           v-for="tag in article.tags" 
           :key="tag" 
-          class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-sm font-normal leading-[150%] 2xl:text-base"
+          class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-sm font-normal leading-[150%] 2xl:text-base"
         >
           {{ tag }}
         </span>

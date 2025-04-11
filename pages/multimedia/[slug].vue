@@ -6,7 +6,7 @@
           :src="project.cover1" 
           :alt="`${project.title} Cover 2`"
           format="webp"
-          quality="40"
+          quality="80"
           loading="lazy"
           fit="cover"
         />
@@ -72,7 +72,7 @@
           :src="project.cover2" 
           :alt="`${project.title} Cover 2`"
           format="webp"
-          quality="50"
+          quality="80"
           loading="lazy"
           fit="cover"
           class="w-full h-full object-cover"

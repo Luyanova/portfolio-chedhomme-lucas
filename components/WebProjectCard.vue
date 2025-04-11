@@ -1,5 +1,5 @@
 <template>
-  <div class="project-card sm:w-[800px] lg:w-[966px] flex flex-col lg:flex-row gap-4 overflow-hidden p-2 rounded-xs">
+  <div class="project-card sm:w-[800px] lg:w-[966px] flex flex-col lg:flex-row gap-4 overflow-hidden p-2 rounded-sm">
     <!-- Image de couverture -->
     <div class="w-full h-64 sm:h-100 lg:w-[400px] lg:h-full overflow-hidden rounded-sm flex-shrink-0">
       <NuxtImg 
@@ -9,7 +9,7 @@
         quality="80"
         loading="lazy"
         fit="cover"
-        class="w-full h-full object-cover rounded-xs"
+        class="w-full h-full object-cover rounded-sm"
       />
     </div>
     
@@ -27,7 +27,7 @@
         <span 
           v-for="tag in article.tags" 
           :key="tag" 
-          class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-xs font-['Satoshi_Variable'] text-[14px] sm:text-[16px] font-normal leading-[150%] whitespace-nowrap"
+          class="text-grey-50 bg-secondary-500 px-3 py-1.5 rounded-sm font-['Satoshi_Variable'] text-[14px] sm:text-[16px] font-normal leading-[150%] whitespace-nowrap"
         >
           {{ tag }}
         </span>

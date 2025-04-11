@@ -16,7 +16,7 @@
     </p>
 
     
-    <NuxtLink to="/" class="bg-primary-500  cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-2 rounded-xs border-1 border-grey-600">
+    <NuxtLink to="/" class="bg-primary-500  cursor-pointer inline-flex items-center justify-center gap-2 px-6 py-2 rounded-sm border-1 border-grey-600">
       <span>Accueil</span>
     </NuxtLink>
 
