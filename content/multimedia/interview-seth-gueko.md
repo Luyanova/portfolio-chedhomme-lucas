@@ -3,7 +3,7 @@ title: "Interview Seth Gueko"
 isTopProject: true
 summary: "Interview Instagram de Seth Gueko pour Share Music : une rencontre avec un artiste qui fait bouger la scène rap."
 cover1: "/img/projects/multimedia/interviewSethGueko/sethGueko1.jpg"
-cover2: "/img/projects/multimedia/interviewSethGueko/sethGueko2.jpg"
+cover2: "/img/projects/multimedia/interviewSethGueko/sethGueko2.png"
 tags:
   - Vidéo
   - Interview
