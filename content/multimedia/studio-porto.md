@@ -18,9 +18,9 @@ description: "Basé au Portugal pendant plusieurs mois, j'ai intégré l'équipe
 objective: "Développer mon œil photographique en contexte nightlife à l'international et apprendre à m'adapter rapidement aux ambiances et besoins des clients dans un environnement de travail rapide et exigeant."
 galleryImages:
   - path: /img/projects/multimedia/studioPorto/studioPorto3.png
-    legend: "Soirée au Portugal"
+    legend: "Portrait dans un studio au Portugual"
   - path: /img/projects/multimedia/studioPorto/studioPorto4.png
-    legend: "Ambiance nightlife"
+    legend: "Portrait dans un studio au Portugual"
   - path: /img/projects/multimedia/studioPorto/studioPorto5.png
-    legend: "Photographie événementielle"
+    legend: "Portrait dans un studio au Portugual"
 ---
